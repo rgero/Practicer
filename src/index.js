@@ -3,8 +3,13 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import configureStore from './store/configureStore';
 
-//    Styles
-import './style/index.css';
+import 'react-dates/initialize'; // We need this before we use react-dates
+import 'react-dates/lib/css/_datepicker.css';
+
+//Styles
+import 'normalize.css/normalize.css';
+import "./styles/style.scss"
+
 
 //    Components
 import AppRouter from './routers/AppRouter';
