@@ -30,7 +30,9 @@ The goal for this project is to create a website in which a person can perform t
 I've mocked this out a bit using Google Sheets. Here's a couple images. The first one is the practice page, the second is the cost page, the third one is the stats page.
 
 ![Practices](./images/Practices.png "Practices")
+
 ![Costs](./images/Costs.png "Costs")
+
 ![Stats](./images/Stats.png "Stats")
 
 ### Technical Aspects
