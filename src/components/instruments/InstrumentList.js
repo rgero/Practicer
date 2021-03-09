@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import InstrumentListItem from './InstrumentListItem'
-import {getVisibleInstruments} from '../selectors/instruments';
+import {getVisibleInstruments} from '../../selectors/instruments';
 
 export const InstrumentList = (props) => {
     return (

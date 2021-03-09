@@ -14,7 +14,6 @@ const getVisiblePractices = (practices, inputParams) => {
 
         return startDateMatch && endDateMatch && textMatch;
     }).sort((a,b) => {
-        console.lo
         if (sortByValue === "ascending"){
             return moment(a.practiceDate).isSameOrAfter(moment(b.practiceDate), 'day') ? 1 : -1;
         } else {

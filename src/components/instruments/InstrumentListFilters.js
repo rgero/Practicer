@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { setTextFilter, sortBy } from '../actions/filters'
+import { setTextFilter, sortBy } from '../../actions/filters'
 
 export class InstrumentListFilters extends React.Component {
 

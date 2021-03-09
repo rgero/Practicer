@@ -4,10 +4,16 @@ import {createBrowserHistory} from 'history';
 
 import IndexPage from '../components/IndexPage';
 import NotFoundPage from '../components/NotFoundPage';
+import DashboardPage from '../components/DashboardPage';
 import {Header} from '../components/Header';
-import AddPractice from '../components/AddPracticePage';
-import AddInstrument from '../components/AddInstrumentPage';
-import InstrumentPage from '../components/InstrumentPage';
+
+import PracticePage from '../components/practices/PracticePage';
+import AddPractice from '../components/practices/AddPracticePage';
+import EditPractice from '../components/practices/EditPracticePage';
+
+import AddInstrument from '../components/instruments/AddInstrumentPage';
+import InstrumentPage from '../components/instruments/InstrumentPage';
+import EditInstrumentPage from '../components/instruments/EditInstrument';
 
 
 export const history = createBrowserHistory();
@@ -18,9 +24,14 @@ const AppRouter = () => (
     <div className="content-container">
       <Switch>
         <Route path="/" component={IndexPage} exact={true}/>
+        <Route path="/dashboard" component={DashboardPage} />
+        <Route path="/practices/" component={PracticePage} exact={true} />
         <Route path="/practices/create" component={AddPractice} />
+        <Route path="/practices/edit/:id" component={EditPractice} />
+        
         <Route path="/instruments/" component={InstrumentPage} exact={true} />
         <Route path="/instruments/create" component={AddInstrument} />
+        <Route path="/instruments/edit/:id" component={EditInstrumentPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import PracticeForm from '../forms/PracticeForm';
-import { addPractice } from '../actions/practices';
+import PracticeForm from './PracticeForm';
+import { addPractice } from '../../actions/practices';
 
 export class AddPracticePage extends React.Component {
 

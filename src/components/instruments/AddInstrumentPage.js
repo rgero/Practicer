@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import InstrumentForm from '../forms/InstrumentForm';
-import { addInstrument } from '../actions/instruments';
+import InstrumentForm from './InstrumentForm';
+import { addInstrument } from '../../actions/instruments';
 
 export class AddInstrumentPage extends React.Component {
     constructor(props){
