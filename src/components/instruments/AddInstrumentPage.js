@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import InstrumentForm from './InstrumentForm';
 import { addInstrument } from '../../actions/instruments';
 
+import {uid} from 'uid';
+
 export class AddInstrumentPage extends React.Component {
     constructor(props){
         super(props);
@@ -10,6 +12,10 @@ export class AddInstrumentPage extends React.Component {
     }
 
     onSubmit(instrument){
+
+        // Add a temporary ID
+        instrument.id = uid(22);
+
         this.props.onSubmit(instrument);
         this.props.history.push('/instruments')
     }

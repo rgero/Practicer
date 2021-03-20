@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import PracticeForm from './PracticeForm';
 import { addPractice } from '../../actions/practices';
 
+import {uid} from 'uid';
+
 export class AddPracticePage extends React.Component {
 
     constructor(props){
@@ -13,6 +15,10 @@ export class AddPracticePage extends React.Component {
     };
     
     onSubmit(practice){
+
+        // Add a temporary ID
+        practice.id = uid(22);
+
         this.props.onSubmit(practice);
         this.props.history.push('/practices/')
     }
