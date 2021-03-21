@@ -1,4 +1,3 @@
-import moment from 'moment';
 const filtersDefaultState = {
     text: "",
     sortBy: "descending",

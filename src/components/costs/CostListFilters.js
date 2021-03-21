@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { DateRangePicker } from 'react-dates';
-import { setTextFilter, sortBy, setStartDate, setEndDate } from '../../actions/filters';
+import { setTextFilter, setStartDate, setEndDate } from '../../actions/filters'
 
 
-export class PracticeListFilters extends React.Component {
+export class CostListFilters extends React.Component {
 
     constructor(props){
         super(props)
@@ -29,7 +29,7 @@ export class PracticeListFilters extends React.Component {
     }
 
     onSortChange(e){
-        this.props.sortBy(e.target.value);
+        // Just a stub right now
     }
 
     onTextChange(e){
@@ -45,15 +45,13 @@ export class PracticeListFilters extends React.Component {
                     </div>
                     <div className="input-group__item">
                         <select className="select" value={this.props.filters.sortBy} onChange={this.onSortChange} >
-                            <option value="ascending">Ascending</option>
-                            <option value="descending">Descending</option>
+                            <option value="date">Date</option>
+                            <option value="amount">Amount</option>
                         </select>
                     </div>
                     <div className="input-group__item">
                         <DateRangePicker
                             startDate={this.props.filters.startDate}
-                            startDateId = {"0"}
-                            endDateId = {"1"}
                             endDate={this.props.filters.endDate}
                             onDatesChange={this.onDatesChange}
                             focusedInput={this.state.calendarFocus}
@@ -65,6 +63,8 @@ export class PracticeListFilters extends React.Component {
                         />
                     </div>
                 </div>
+
+
             </div>
         )
     }
@@ -78,9 +78,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
     setTextFilter: (text) => dispatch(setTextFilter(text)),
-    sortBy: (e) => dispatch(sortBy(e)),
     setStartDate: (startDate) => dispatch(setStartDate(startDate)),
     setEndDate: (endDate) => dispatch(setEndDate(endDate))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(PracticeListFilters);
+export default connect(mapStateToProps, mapDispatchToProps)(CostListFilters);
