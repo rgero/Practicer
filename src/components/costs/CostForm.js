@@ -46,6 +46,7 @@ export default class CostForm extends React.Component {
     }
 
     onCalendarFocusChanged(calendarFocused){
+        calendarFocused = calendarFocused["focused"]
         this.setState(() => ({calendarFocused}));
     }
 
