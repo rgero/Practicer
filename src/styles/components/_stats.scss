@@ -1,0 +1,16 @@
+.stat-group {
+    border-style: solid;
+    border-radius: 3px;
+    padding: $s-size;
+}
+
+.stat-header {
+    font-size: 2.2rem;
+    color: $darkBlue;
+}
+
+.stats-info {
+    color: $dark-gray;
+    background-color: $off-white;
+    padding: $s-size;
+}
