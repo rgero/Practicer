@@ -4,6 +4,8 @@ import CostListItem from './CostListItem'
 import {getVisibleCosts} from '../../selectors/costs';
 import { sortCostByAmount, sortCostByDate, sortDirection } from '../../actions/filters'
 
+import ArrowDropUpTwoToneIcon from '@material-ui/icons/ArrowDropUpTwoTone';
+import ArrowDropDownTwoToneIcon from '@material-ui/icons/ArrowDropDownTwoTone';
 
 
 // Idea: Make these headers clickable. If they are, we can process the sort by that way rather than having the drop downs.
@@ -15,6 +17,7 @@ export class CostList extends React.Component {
         this.sortBy = this.sortBy.bind(this);
         this.sortByCosts = this.sortByCosts.bind(this);
         this.sortByDate = this.sortByDate.bind(this);
+        this.displaySortIcon = this.displaySortIcon.bind(this);
 
         this.state = { 
             order: "descending",
@@ -46,6 +49,8 @@ export class CostList extends React.Component {
                     this.props.sortCostByDate();
                     this.setState( {sortItem: "date"});
                     break;
+                default:
+                    break;
             }
         }
     }
@@ -60,6 +65,22 @@ export class CostList extends React.Component {
         this.sortBy("date");
     }
 
+    displaySortIcon(value)
+    {
+        if (this.state.sortItem !== value)
+        {
+            return "";
+        }
+
+        if (this.state.order === "descending")
+        {
+            return <ArrowDropDownTwoToneIcon/>
+        } else 
+        {
+            return <ArrowDropUpTwoToneIcon/>
+        }
+    }
+
     render(){
         return (
             <div className="content-container">
@@ -68,7 +89,7 @@ export class CostList extends React.Component {
                     <div className="show-for-desktop sortingHeader" onClick={this.sortByDate}>Date</div>
                     <div className="show-for-desktop">Instrument</div>
                     <div className="show-for-desktop">Description</div>
-                    <div className="show-for-desktop sortingHeader" onClick={this.sortByCosts}>Amount</div>
+                    <div className="show-for-desktop sortingHeader" onClick={this.sortByCosts}>Amount{this.displaySortIcon("costs")}</div>
                 </div>
                 <div className="list-body">
                     {
