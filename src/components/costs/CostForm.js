@@ -5,14 +5,15 @@ import { SingleDatePicker } from 'react-dates';
 export default class CostForm extends React.Component {
     constructor(props){
         super(props);
-        this.onDescriptionChange = this.onDescriptionChange.bind(this);
-        this.onNoteChange = this.onNoteChange.bind(this);
+
+        this.onTextChange = this.onTextChange.bind(this);
         this.onAmountChange = this.onAmountChange.bind(this);
         this.onDateChange = this.onDateChange.bind(this);
         this.onCalendarFocusChanged = this.onCalendarFocusChanged.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.state= {
             description: props.cost ? props.cost.description : '',
+            instrument: props.cost ? props.cost.instrument : '',
             note: props.cost ? props.cost.note : '',
             amount: props.cost ? (props.cost.amount / 100).toString() : '',
             createdAt: props.cost ? moment(props.cost.createdAt) : moment(),
@@ -21,13 +22,29 @@ export default class CostForm extends React.Component {
         };
     };
 
-    onDescriptionChange(e) {
-        const description = e.target.value;
-        this.setState(()=>({
-            description
-        }));
+    onTextChange = (value) => (evt) => {
+        var newValue = evt.target.value;
+        switch(value){
+            case "instrument":
+                this.setState({
+                    instrument: newValue
+                });
+                break;
+            case "description":
+                this.setState({
+                    description: newValue
+                });
+                break;
+            case "note":
+                this.setState({
+                    note: newValue
+                });
+                break;
+            default:
+                break;
+        }
     }
-
+    
     onAmountChange(e){
         const amount = e.target.value;
         if (!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)) {
@@ -49,11 +66,6 @@ export default class CostForm extends React.Component {
         calendarFocused = calendarFocused["focused"]
         this.setState(() => ({calendarFocused}));
     }
-
-    onNoteChange(e) {
-        const note = e.target.value;
-        this.setState(()=> ({note}));
-    }
     
     onSubmit(e){
         e.preventDefault();
@@ -65,6 +77,7 @@ export default class CostForm extends React.Component {
             this.setState(()=>({error}))
             this.props.onSubmit({
                 description: this.state.description,
+                instrument: this.state.instrument ? this.state.instrument : "No Instrument",
                 amount: parseFloat(this.state.amount, 10) * 100,
                 createdAt: this.state.createdAt.valueOf(),
                 note: this.state.note
@@ -79,10 +92,17 @@ export default class CostForm extends React.Component {
                 <input
                     type="text"
                     className="text-input"
-                    placeholder="Description"
+                    placeholder="Instrument"
                     autoFocus
+                    value={this.state.instrument}
+                    onChange={this.onTextChange("instrument")}
+                />
+                <input
+                    type="text"
+                    className="text-input"
+                    placeholder="Description"
                     value={this.state.description}
-                    onChange={this.onDescriptionChange}
+                    onChange={this.onTextChange("description")}
                 />
                 <input
                     type="text"
@@ -104,7 +124,7 @@ export default class CostForm extends React.Component {
                     placeholder="Add a note for your cost"
                     className="textarea"
                     value={this.state.note}
-                    onChange={this.onNoteChange}
+                    onChange={this.onTextChange("note")}
                 >
                 </textarea>
                 <div>

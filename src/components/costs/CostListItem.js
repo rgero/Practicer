@@ -7,6 +7,7 @@ export const CostListItem = (props) => (
         <Link className="list-item" to={`/costs/edit/${props.id}`}>
                 <div className="show-for-mobile">{moment(props.createdAt).format('MMM Do, YYYY')} - <strong>{numeral((props.amount/100)).format('$0,0.00')}</strong></div>
                 <div className="show-for-desktop">{moment(props.createdAt).format('MMM Do, YYYY')}</div>
+                <div className="show-for-desktop">{props.instrument}</div>
                 <div className="show-for-desktop">{props.description}</div>
                 <div className="show-for-desktop">{numeral((props.amount/100)).format('$0,0.00')}</div>
         </Link>      

@@ -7,7 +7,9 @@ const getVisibleCosts = (costs, { text, sortCostBy, sortDirection, startDate, en
         const createdMoment = moment(cost.createdAt);
         const startDateMatch = startDate ? startDate.isSameOrBefore(createdMoment, 'day') : true;
         const endDateMatch = endDate ? endDate.isSameOrAfter(createdMoment, 'day') : true;
-        const textMatch = typeof text !== "string" || cost.description.toLowerCase().includes(text.toLowerCase());
+        const textMatch = typeof text !== "string" ||
+                          cost.description.toLowerCase().includes(text.toLowerCase()) ||
+                          cost.instrument.toLowerCase().includes(text.toLowerCase());
 
         return startDateMatch && endDateMatch && textMatch;
     }).sort((a,b) => {

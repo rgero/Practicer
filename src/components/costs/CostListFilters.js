@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { DateRangePicker } from 'react-dates';
-import { setTextFilter, sortCostByAmount, sortCostByDate, sortDirection, setStartDate, setEndDate } from '../../actions/filters'
+import { setTextFilter, setStartDate, setEndDate } from '../../actions/filters'
 
 
 export class CostListFilters extends React.Component {
@@ -67,21 +67,6 @@ export class CostListFilters extends React.Component {
                         />
                     </div>
                 </div>
-                <div className="input-group-close">
-                    <div>
-                        <select className="select" value={this.props.filters.sortCostBy} onChange={this.onCostSortChange} >
-                            <option value="date">Date</option>
-                            <option value="amount">Amount</option>
-                        </select>
-                    </div>
-                    <div>
-                        <select className="select" value={this.props.filters.sortDirection} onChange={this.onSortDirectionChange} >
-                            <option value="ascending">Ascending</option>
-                            <option value="descending">Descending</option>
-                        </select>
-                    </div>
-                </div>
-
             </div>
         )
     }
@@ -95,9 +80,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
     setTextFilter: (text) => dispatch(setTextFilter(text)),
-    sortCostByDate: () => dispatch(sortCostByDate()),
-    sortCostByAmount: () => dispatch(sortCostByAmount()),
-    sortDirection: (e) => dispatch(sortDirection(e)),
     setStartDate: (startDate) => dispatch(setStartDate(startDate)),
     setEndDate: (endDate) => dispatch(setEndDate(endDate))
 })
