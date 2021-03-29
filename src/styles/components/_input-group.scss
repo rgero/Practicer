@@ -2,8 +2,22 @@
 .input-group {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
     @media (min-width: $desktop-breakpoint) {
         flex-direction: row;
         justify-content: space-between;
     }
+}
+
+.input-group-close {
+    @extend .input-group;
+
+    @media (min-width: $desktop-breakpoint) {
+        flex-direction: row;
+        justify-content: flex-end;
+        > div {
+        padding: 0 0 0 5px;
+        }
+    }    
 }

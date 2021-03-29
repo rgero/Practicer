@@ -7,7 +7,7 @@ export const InstrumentList = (props) => {
     return (
         <div className="content-container">
             <div className="list-header">
-                <div className="show-for-mobile">GO Instruments</div>
+                <div className="show-for-mobile">Instruments</div>
                 <div className="show-for-desktop">Instrument</div>
                 <div className="show-for-desktop">Type</div>
             </div>

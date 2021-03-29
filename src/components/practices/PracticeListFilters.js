@@ -40,16 +40,16 @@ export class PracticeListFilters extends React.Component {
         return(
             <div className="content-container">
                 <div className="input-group">
-                    <div className="input-group__item">
+                    <div>
                         <input type="text" className="text-input" value={this.props.filters.text} onChange={this.onTextChange} />
                     </div>
-                    <div className="input-group__item">
+                    <div>
                         <select className="select" value={this.props.filters.sortDirection} onChange={this.onSortDirectionChange} >
                             <option value="ascending">Ascending</option>
                             <option value="descending">Descending</option>
                         </select>
                     </div>
-                    <div className="input-group__item">
+                    <div>
                         <DateRangePicker
                             startDate={this.props.filters.startDate}
                             startDateId = {"0"}
