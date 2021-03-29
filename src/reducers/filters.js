@@ -1,6 +1,6 @@
 const filtersDefaultState = {
     text: "",
-    sortBy: "descending",
+    sortDirection: "descending",
     startDate: undefined,
     endDate: undefined
 };
@@ -11,10 +11,20 @@ const filtersReducer = (state = filtersDefaultState, action) => {
                 ...state,
                 text: action.newText
             }
-        case "SORT_BY":
+        case "SORT_DIRECTION":
             return {
                 ...state,
-                sortBy: action.sortByValue
+                sortDirection: action.sortDirectionValue
+            }
+        case "SORT_COST_BY_AMOUNT":
+            return {
+                ...state,
+                sortCostBy: "amount"
+            }
+        case "SORT_COST_BY_DATE":
+            return {
+                ...state,
+                sortCostBy: "date"
             }
         case "SET_START_DATE":
             return {

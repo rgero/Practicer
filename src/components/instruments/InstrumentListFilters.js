@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { setTextFilter, sortBy } from '../../actions/filters'
+import { setTextFilter, sortDirection } from '../../actions/filters'
 
 export class InstrumentListFilters extends React.Component {
 
@@ -8,7 +8,7 @@ export class InstrumentListFilters extends React.Component {
         super(props)
         this.onFocusChange = this.onFocusChange.bind(this);
         this.onTextChange = this.onTextChange.bind(this);
-        this.onSortChange = this.onSortChange.bind(this);
+        this.onSortDirectionChange = this.onSortDirectionChange.bind(this);
         this.state = {
             calendarFocus: null
 
@@ -21,8 +21,8 @@ export class InstrumentListFilters extends React.Component {
         })
     }
 
-    onSortChange(e){
-        this.props.sortBy(e.target.value);
+    onSortDirectionChange(e){
+        this.props.sortDirection(e.target.value);
     }
 
     onTextChange(e){
@@ -36,7 +36,7 @@ export class InstrumentListFilters extends React.Component {
                         <input type="text" className="text-input" value={this.props.filters.text} onChange={this.onTextChange} />
                         </div>
                     <div>
-                        <select className="select" value={this.props.filters.sortBy} onChange={this.onSortChange} >
+                        <select className="select" value={this.props.filters.sortDirection} onChange={this.onSortDirectionChange} >
                             <option value="ascending">Ascending</option>
                             <option value="descending">Descending</option>
                         </select>
@@ -54,7 +54,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
     setTextFilter: (text) => dispatch(setTextFilter(text)),
-    sortBy: (e) => dispatch(sortBy(e))
+    sortDirection: (e) => dispatch(sortDirection(e))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(InstrumentListFilters);

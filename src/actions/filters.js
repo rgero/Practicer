@@ -5,9 +5,9 @@ export const setTextFilter = ( newText='' ) => ({
     newText
 })
 
-export const sortBy = ( sortByValue="") => ({
-    type: "SORT_BY",
-    sortByValue
+export const sortDirection= ( sortDirectionValue="") => ({
+    type: "SORT_DIRECTION",
+    sortDirectionValue
 })
 
 export const setStartDate = (startDate = undefined) => ({
@@ -18,4 +18,12 @@ export const setStartDate = (startDate = undefined) => ({
 export const setEndDate = (endDate = undefined) => ({
     type: "SET_END_DATE",
     endDate
+})
+
+export const sortCostByAmount = () => ({
+    type: "SORT_COST_BY_AMOUNT",
+})
+
+export const sortCostByDate = () => ({
+    type: "SORT_COST_BY_DATE",
 })
